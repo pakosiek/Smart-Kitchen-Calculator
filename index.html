@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kalkulator Kuchenny</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+        <div class="converter-box">
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="pl" onclick="setLanguage('pl')">PL</button>
+                <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="el" onclick="setLanguage('el')">GR</button>
+            </div>
+
+            <h2 id="title-converter">Przelicznik Składników</h2>
+            
+            <label id="lbl-ingredient">Wybierz składnik:</label>
+            <select id="ingredient-select" onchange="calculate()"></select>
+
+            <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <label id="lbl-amount">Ilość:</label>
+                    <input type="number" id="input-amount" value="1" min="0" step="0.1" oninput="calculate()">
+                </div>
+                <div style="flex: 1;">
+                    <label id="lbl-unit-from">Z jednostki:</label>
+                    <select id="unit-from" onchange="calculate()">
+                        </select>
+                </div>
+            </div>
+
+            <label id="lbl-unit-to">Na jednostkę:</label>
+            <select id="unit-to" onchange="calculate()">
+                </select>
+
+            <div id="result-display" class="result-box">
+            </div>
+
+            <div class="section-divider"></div>
+
+        <div class="recipe-card">
+            <h3 id="txt-recipe-title">Przepis: Naleśniki</h3>
+            
+            <div class="portions-control">
+                <label id="lbl-portions-count" for="recipe-portions" style="margin: 0;">Liczba porcji:</label>
+                
+                <div class="stepper">
+                    <button onclick="changePortions(-1)">-</button>
+                    <input type="number" id="recipe-portions" value="4" readonly>
+                    <button onclick="changePortions(1)">+</button>
+                </div>
+            </div>
+
+            <ul class="ingredients-list" id="recipe-list">
+            
+            <li class="recipe-item" data-id="maka-pszenna" data-unit="g">
+                <span class="qty" data-base="200">200</span> 
+                <span class="unit-name">g</span> 
+                <span class="ing-name">Mąki pszennej</span>
+            </li>
+
+            <li class="recipe-item" data-id="jajko" data-unit="g">
+                <span class="qty" data-base="120">120</span> 
+                <span class="unit-name">g</span> 
+                <span class="ing-name">Jajek</span> 
+                <span class="dynamic-note" data-pl="(ok. 2 szt)" data-en="(approx. 2 pieces)" data-el="(~2 τεμάχια)">
+                    (ok. 2 szt)
+                </span>
+            </li>
+
+            <li class="recipe-item" data-id="mleko" data-unit="ml">
+                <span class="qty" data-base="300">300</span> 
+                <span class="unit-name">ml</span> 
+                <span class="ing-name">Mleka</span>
+            </li>
+
+            <li class="recipe-item" data-id="oliwa" data-unit="tbsp">
+                <span class="qty" data-base="3">3</span> 
+                <span class="unit-name">łyżki</span> 
+                <span class="ing-name">Oliwy</span>
+            </li>
+
+        </ul>
+            
+            <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
+                <h4 id="txt-nutr-title">Wartości odżywcze (Całość):</h4>
+                
+                <div style="display: flex; justify-content: space-around; background: #fff; padding: 10px; border-radius: 5px;">
+                    <div style="text-align: center;">
+                        <div id="txt-nutr-kcal" style="font-size: 0.8em; color: #666;">Kcal</div>
+                        <strong id="total-kcal" style="color: #d32f2f; font-size: 1.2em;">0</strong>
+                    </div>
+                    <div style="text-align: center;">
+                        <div id="txt-nutr-protein" style="font-size: 0.8em; color: #666;">Białko</div>
+                        <strong id="total-protein">0</strong> g
+                    </div>
+                    <div style="text-align: center;">
+                        <div id="txt-nutr-fat" style="font-size: 0.8em; color: #666;">Tłuszcze</div>
+                        <strong id="total-fat">0</strong> g
+                    </div>
+                    <div style="text-align: center;">
+                        <div id="txt-nutr-carbs" style="font-size: 0.8em; color: #666;">Węgle</div>
+                        <strong id="total-carbs">0</strong> g
+                    </div>
+                </div>
+                
+                <div id="txt-nutr-info" style="text-align: center; font-size: 0.8em; color: #888; margin-top: 5px;">
+                    * Wartości przybliżone
+                </div>
+            </div>
+        </div>
+        <script src="js/app.js"></script>
+    </body>
+</html>
