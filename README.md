@@ -2,7 +2,7 @@
 
 A dynamic Single Page Application (SPA) designed to help home cooks convert ingredients between volume (cups, spoons) and weight (grams) units, taking ingredient density into account. It also features a recipe portion scaler and real-time nutrition calculation.
 
-[Link to Live Demo]([(https://pakosiek.github.io/Smart-Kitchen-Calculator/)])
+[Link to Live Demo](https://pakosiek.github.io/Smart-Kitchen-Calculator/)
 
 ## 🚀 Key Features
 
@@ -28,4 +28,5 @@ if (fromType === 'volume' && toType === 'weight') {
     result = grams / toVal;
 
 }
+
 
